@@ -13,6 +13,8 @@ class Warehouse(models.Model):
     """
 
     title = models.CharField(max_length=255, verbose_name="Название склада")
+    is_remote = models.BooleanField(default=False,
+                                    verbose_name="Удаленный склад?")
 
 
 class Product(models.Model):
@@ -33,6 +35,5 @@ class Product(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    warehouse = models.ForeignKey(
-        Warehouse, on_delete=models.CASCADE, verbose_name="название склада"
-    )
+    warehouse = models.ForeignKey(Warehouse, related_name='products',
+                                  on_delete=models.CASCADE)
