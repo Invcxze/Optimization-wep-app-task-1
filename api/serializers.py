@@ -5,6 +5,7 @@ from .models import Product, Warehouse
 
 class WarehouseSerializer(serializers.ModelSerializer):
     """Сериализатор модели склада"""
+
     class Meta:
         model = Warehouse
         fields = "__all__"
@@ -12,6 +13,7 @@ class WarehouseSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     """Сериализатор модели продуктов"""
+
     warehouse = WarehouseSerializer()
 
     class Meta:
